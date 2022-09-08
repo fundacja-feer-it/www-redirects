@@ -9,6 +9,5 @@ URL=$(whiptail --title "Cel" --inputbox "URL docelowy: " 10 60  3>&1 1>&2 2>&3)
 sudo mkdir -p /var/www/$DOMENA/public_html
 sudo chown -R $USER:$USER /var/www/$DOMENA/public_html
 sudo chmod -R 755 /var/www
-cd "/var/www/$DOMENA/public_html/"
-$DOMENA >> .htaccess
-nano .htaccess
+nano /var/www/$DOMENA/public_html/index.html
+sudo systemctl restart apache2
