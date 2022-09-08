@@ -6,9 +6,14 @@ fi
 whiptail --title "URL Redirects engine " --msgbox "Skrypt tworzy nowe przekierowanie" 10 60
 DOMENA=$(whiptail --title "Zródło" --inputbox "Jaka jest nazwa domeny?" 10 60  3>&1 1>&2 2>&3)
 URL=$(whiptail --title "Cel" --inputbox "URL docelowy: " 10 60  3>&1 1>&2 2>&3)
+
+if [ -e $DOMENA ]; then
+ echo "taka domena juz istnieje"
+else
+ 
 sudo mkdir -p /var/www/$DOMENA/public_html
 sudo chown -R $USER:$USER /var/www/$DOMENA/public_html
 sudo chmod -R 755 /var/www
 cd "/var/www/$DOMENA/public_html/"
-$DOMENA >> .htaccess
-nano .htaccess
+echo $DOMENA >> .htaccess
+fi
